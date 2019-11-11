@@ -24,12 +24,11 @@ test('Displays Locked if the locked prop is true', () => {
     expect(mockOpen).toHaveBeenCalledTimes(0);
 })
 
-// test('When locked or closed use the red-led class', () => {
-//     const lockedClosed = jest.fn();
+test('When locked or closed use the red-led class', () => {
+    const lockedClosed = jest.fn();
 
-//     const { container, getByText } = render(<Display closed={true} locked={true}/>)
+    const { getByText } = render(<Display closed={true} locked={true}/>)
     
-//     const theDiv = getByText(/closedClass/i)
-//     expect(container).toContain(theDiv)
-    
-// })
+    expect(getByText(/locked/i).classList.contains('red-led')).toBe(true);
+    expect(getByText(/closed/i).classList.contains('red-led')).toBe(true);
+})
